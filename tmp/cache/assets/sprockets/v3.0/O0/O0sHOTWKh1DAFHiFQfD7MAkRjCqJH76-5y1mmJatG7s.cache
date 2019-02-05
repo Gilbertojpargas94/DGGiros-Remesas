@@ -1,7 +1,0 @@
-I"}(function() {
-  $('#quotation_country').on('change', function(evt) {
-    return alert('CUloooo');
-  });
-
-}).call(this);
-:ET

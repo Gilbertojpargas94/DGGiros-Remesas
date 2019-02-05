@@ -1,9 +1,0 @@
-I"š(function() {
-  $(document).on('turbolinks:load', function() {
-    return $('#up_logo').change(function() {});
-  });
-
-  alert('CULOOOO');
-
-}).call(this);
-:ET

@@ -1,7 +1,0 @@
-I"q(function() {
-  $('#quotation_country').change(function() {
-    return alert('HOla');
-  });
-
-}).call(this);
-:ET

@@ -1,9 +1,0 @@
-I"¸(function() {
-  $(document).on('turbolinks:load', function() {
-    return $('#quotation_country').change(function() {});
-  });
-
-  alert($('#quotation_country').val());
-
-}).call(this);
-:ET
