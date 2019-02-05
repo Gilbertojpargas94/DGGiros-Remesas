@@ -1,0 +1,5 @@
+<% if current_user.type_person == 'normal' %>
+  <%= render 'index_normal' %>
+<% else %>
+  <%= render 'index_worker' %>
+<%end%>

@@ -1,0 +1,106 @@
+ <div class="row">
+    <div class="col l2 s12"></div>
+    <div class="col s12 l8">
+        <div class="titlesteps">
+            <h1>
+                <span class="circle3r">4</span> 
+                Validar Pago
+            </h1>
+        </div>
+        <div class="window">
+            <h2> 
+                <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                Por favor confirme su pago enviándonos el comprobante, es importante hacernos saber que cancelaste  tu operación.
+            </h2>
+            <% if @quotation.errors.any?%>
+                <%= form_with(model: @quotation, local: true) do |form| %>
+                    <% if @quotation.errors.any? %>
+                        <div id="error_explanation">
+                          <h2><%= pluralize(@quotation.errors.count, "error") %> La cotización no pudo ser guardado por:</h2>
+                          <ul>
+                            <% @quotation.errors.full_messages.each do |message| %>
+                                <li><%= message %></li>
+                            <% end %>
+                          </ul>
+                        </div>
+                    <% end %>
+                    <div class="row">
+                        <div class="input-field col s12 l12">
+                            <p>Subir comprobante</p>
+                            <%= form.file_field :payment, class:"filled-in", id:'pagouploader'%>
+                            <br/><br/>
+                            <p>Si no cuenta con el comprobante, pulse en confirmar y subalo en otro momento.</p>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s10 l10"></div>
+                            <div class="col s12 l2">
+                            	<%= link_to "SALTAR", quotations_path, class: 'waves-effect waves-light btn btn-theme', style:'width: 80%; margin:auto;display: block;' %>
+                          
+                            </div>
+                        </div>
+                        <div class="input-field col s12 l12">
+                          <div class="containercontinue">
+                            <%= form.submit "CONFIRMAR", id:'continuarpagob' ,class: 'waves-effect waves-light btn btn-theme', style:'width: 100%;' %>
+                          </div>
+                        </div>
+                    </div>
+                <%end%>
+            <%else%>
+                <% if @quotation.payment_file_name.nil? %>
+                    <%= form_with(model: @quotation, local: true) do |form| %>
+                        <div class="row">
+                            <div class="input-field col s12 l12">
+                                <p>Subir comprobante</p>
+                                <%= form.file_field :payment, class:"filled-in", id:'pagouploader'%>
+                                <br/><br/>
+                                <p>Si no cuenta con el comprobante, pulse en confirmar y subalo en otro momento.</p>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s10 l10"></div>
+                                <div class="col s12 l2">
+                                    <%= link_to "SALTAR", quotations_path, class: 'waves-effect waves-light btn btn-theme', style:'width: 80%; margin:auto;display: block;' %>
+                              
+                                </div>
+                            </div>
+                            <div class="input-field col s12 l12">
+                              <div class="containercontinue">
+                                <%= form.submit "CONFIRMAR", id:'continuarpagob' ,class: 'waves-effect waves-light btn btn-theme', style:'width: 100%;' %>
+                              </div>
+                            </div>
+                        </div>
+                    <%end%>
+                <%else%>
+                    <% if @quotation.payment_file_name.include?(".pdf") %>
+                      <div class="pdfcontent">
+                        <%= link_to get_payment_quotation_path(@quotation), class: 'pdf_link' do %>
+                            <i class="fa fa-file-pdf-o fa-3x" aria-hidden="true" style="display: inline"></i>
+                            <p style="display: inline; font-size: 18px;"><%= @quotation.payment_file_name %></p>
+                            <p>Descargar archivo de pago adjunto.</p>
+                        <%end%>
+                      </div>
+                    <%else%>
+                        
+
+                        <%= image_tag @quotation.payment.url(:large) , class:'payimg payimgnormal tooltipped', id:"payimgid", :data => { "position" => "bottom" }, :data => { "tooltip" => "Ver completa la imagen" } %>
+                        
+                    <%end%>
+                    <%= link_to "VOLVER", quotations_path, class: 'waves-effect waves-light btn btn-theme', style:'width: 100%;margin-top: 30px;' %>
+                <%end%>
+            <%end%>
+        </div>
+        <p class="description">Estas en el sistema de petición para una nueva operación, por favor introduce datos correctos para asegurar el éxito de su petición.</p>
+        <hr class="separadorfooter2">
+        <div class="derechos2">
+            <div class="texto">
+                <p>DG Giros & Remesas 2018 Todos los derechos reservados.</p>
+            </div>
+            <div class="socialfooter">
+                <a href="https://www.instagram.com/dg_girosremesas/" target="_blank"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.facebook.com/dg.girosremesas" target="_blank"><i class="fa fa-facebook"></i></a>
+            </div>
+        </div>   
+    </div>
+    <div class="col s2"></div>
+</div>

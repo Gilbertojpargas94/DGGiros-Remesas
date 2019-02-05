@@ -1,0 +1,22 @@
+I"ù(function() {
+  $('#quotation_country').on('change', function(evt) {
+    return conselo.log($(this).val());
+  });
+
+  $.ajax('/get_rates', {
+    type: 'GET',
+    data: {
+      country: 'Panama'
+    },
+    dataType: 'script',
+    error: function(jqXHR, textStatus, errorThrown) {
+      return console.log("AJAX Error: " + textStatus);
+    },
+    success: function(data, textStatus, jqXHR) {
+      console.log(data);
+      return console.log("PAIS SELECIONADO CORECTAMENTE OK!");
+    }
+  });
+
+}).call(this);
+:ET

@@ -1,0 +1,132 @@
+<div class="testing">
+  <div class="wrapper ">
+    <%= render 'partials/sidebar', report: true, worker: false, bank: false, rate: false %>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper"></div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="container-fluid">
+          <div class="titleDashContent">
+            <h2>
+              Reportes <br>
+              <div class="line"></div>
+            </h2>
+          </div>
+          <div class="Dashcontent">
+            <p style="font-size:20px;font-weight:bold">Crear Cotización</p>
+            <%= form_with(model: @quotation, local: true) do |form| %>
+              <% if @quotation.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@quotation.errors.count, "error") %> La cotización no pudo ser guardado por:</h2>
+                    <ul>
+                      <% @quotation.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+              <div class="row">
+                <div class="input-field col s12 l6">
+                  <p>Nombre del cliente</p>
+                  <%= form.text_field :name_user, class: 'validate', required: true%>
+                </div>
+                <div class="input-field col s12 l6">
+                  <p>Correo del Cliente</p>
+                  <%= form.email_field :gmail_user, class: 'validate', required: true%>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 l6">
+                  <p>Cédula del Cliente</p>
+                  <%= form.text_field :dni_user, class: 'validate'%>
+                </div>
+                <div class="input-field col s12 l6">
+                  <p>Dirección del cliente</p>
+                  <%= form.text_field :address_user, class: 'validate'%>
+                 </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 l6">
+                  <p>Teléfono del Cliente</p>
+                  <%= form.text_field :phone_user, class: 'validate'%>
+                </div>
+                <div class="input-field col s12 l6">
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 l6">
+                  <p>Cantidad a Enviar</p>
+                  <%= form.text_field :amount, id:"cantidadenviar", class: 'validate', required: true%>
+                </div>
+                <div class="input-field col s12 l6">
+                  <p>Tasa</p>
+                  <%= form.text_field :rate , id:"tasa", class: 'validate', :disabled => true%>
+                 </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 l6">
+                  <p>País</p>
+                  <%= form.select :country, Rate.all.collect{|u| [u.country, u.country]},{:include_blank => "Seleccione un país"}, id: 'quotation_country',class: 'validate', required: true%>    
+                </div>
+                <div class="input-field col s12 l6">
+                  <p>Monto resultante al Cambio</p>
+                  <input id="result_amount" type="text" class="validate resultinput" disabled>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 l6">
+                  <p>Banco</p> 
+                  <%= form.select :bank, @banks.collect{|u| [u, u]},{:include_blank => "Seleccione un banco"}, id: 'banks',class: 'validate', required: true%>
+                </div>
+                <div class="input-field col s12 l6">
+                  <p>Numero de Cuenta</p>
+                  <%= form.text_field :account , id:"numero_cuenta", class: 'validate', required: true%>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 l6">
+                  <p>Nombre del Beneficiario</p>
+                  <%= form.text_field :headline_account , id:"beneficiarioc", class: 'validate', required: true %>
+                </div>
+                <div class="input-field col s12 l6">
+                  <p>Cédula del Beneficiario</p>
+                  <%= form.text_field :id_account , id:"ced", class: 'validate'%>
+                </div>
+              </div>
+              <div class="row" id="set-up">
+                <div class="input-field col s12 l12">
+                  <p>Correo del Beneficiario</p>
+                  <%= form.email_field :gmail_account , id:"correo", class: 'validate'%>
+                </div>
+                <div class="input-field col s12 l12">
+                  <p>Subir Comprobante</p>
+                  <%= form.file_field :payment, class:"filled-in", id:'pagouploader'%>
+                </div>
+              </div>
+    
+              <div class="row">
+                <div class="input-field col s12 l12">
+                  <p id="msj-bank">El <span>banco</span> seleccionado no lo tenemos disponible actualmente, la transferencia se le realizara desde otro banco, por ende tomara 24h en hacerse efectiva.</p>
+                  <div class="containercontinue actions">
+                    <%= form.submit "CONFIRMAR Y CONTINUAR", class:'waves-effect waves-light btn btn-theme', style:'width:320px' %>
+                  </div>
+                </div>
+              </div>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

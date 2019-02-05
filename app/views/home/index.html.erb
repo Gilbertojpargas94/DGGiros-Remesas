@@ -1,0 +1,396 @@
+<div class="navbar navbarfixed z-depth-3" id="navbar2"> 
+    <div class="logo"> 
+        <%= image_tag "logow.png"%>
+        <h3>DG Giros & Remesas</h3>
+    </div>
+    <ul class="navbarlinks">
+        <li><a href="#acerca"> acerca</a></li>
+        <li><a href="#testimonios" >testimonios</a></li>
+        <li><a href="#nosotros" >nosotros</a></li>
+        <% if user_signed_in? %>
+            <li>
+                <%= link_to quotations_path, class:"waves-effect waves-light btn btn-cotizaciones" do %> <i class="fa fa-hand-holding-usd"></i> 
+                <%= current_user.type_person == 'normal' ? 'tus cotizaciones' : 'reportes' %>
+                <%end%>    
+            </li>
+        <%end%>
+        <% if user_signed_in? %>
+            <li>
+                <%= link_to  "CERRAR SESIÓN",destroy_user_session_path, method: :delete, class:"waves-effect waves-light btn btn-theme" %>
+            </li>
+        <% else %>
+            <li>
+                <%= link_to  "iniciar sesión", new_user_session_path, class:"waves-effect waves-light btn btn-theme" %>
+            </li>
+        <% end %>
+    </ul>
+</div>
+<header class="headerHome z-depth-4">
+    <div class="navbar" id="navbar"> 
+        <div class="logo"> 
+            <%= image_tag "logow.png"%>
+            <h3>DG Giros & Remesas</h3>
+        </div>
+        <ul class="navbarlinks">
+            <li><a href="#acerca"> acerca</a></li>
+            <li><a href="#testimonios" >testimonios</a></li>
+            <li><a href="#nosotros" >nosotros</a></li>
+            <% if user_signed_in? %>
+                <li>
+                    <%= link_to quotations_path, class:"waves-effect waves-light btn btn-cotizaciones" do %> <i class="fa fa-hand-holding-usd"></i> 
+                    <%= current_user.type_person == 'normal' ? 'tus cotizaciones' : 'reportes' %>
+                    <%end%>    
+                </li>
+            <%end%>
+            <% if user_signed_in? %>
+                <li>
+                    <%= link_to  "CERRAR SESIÓN",destroy_user_session_path, method: :delete, class:"waves-effect waves-light btn btn-theme" %>
+                </li>
+            <% else %>
+                <li>
+                    <%= link_to  "iniciar sesión", new_user_session_path, class:"waves-effect waves-light btn btn-theme" %>
+                </li>
+            <% end %>
+        </ul>
+    </div>   
+    <div class="row titles">
+        <div class="col s12">
+            <h1 id="scaletitle" class="titleheader">El mejor tipo de cambio en el cual podrás enviar tus remesas hacia Venezuela
+            </h1>
+        </div>
+        <div class="col s12">
+            <h4 id="scalesub" class="subtitle">Descubre un poco mas acerca de DG Giros & Remesas y sigue el tipo de cambio en linea
+            </h4>
+        </div>
+        <div class="col s12">
+            <div class="containerButtom">
+                <% if user_signed_in? %>
+                    <%= link_to ' COMENZAR OPERACIÓN', new_quotation_path, class: 'waves-effect waves-light btn'%> 
+                <%else%>
+                  <%= link_to 'COMENZAR OPERACIÓN ', new_user_registration_path, class: 'waves-effect waves-light btn'%> 
+                <%end%>
+            </div>
+        </div>
+    </div>
+    <div class="bottomHeader">
+        <div class="row">
+            <div class="col s12 l4">
+                <div class="boxInfoHeader">
+                    <p> Nuestra comision apenas es de un </p>
+                    <h4>10%</h4>
+                    <p>Una de las mas bajas!</p>
+                </div>
+            </div>
+            <div class="col s12 l4">
+                <div class="boxInfoHeader">
+                    <p>Dominamos las redes sociales y somos los preferidos en un</p>
+                    <h4>81%</h4>
+                    <p>sobre nuestra competencia.</p>
+                </div>
+            </div>
+            <div class="col s12 l4">
+                <div class="boxInfoHeader">
+                    <p>Tendrás un</p>
+                    <h4>90%</h4>
+                    <p>Posibilidades de estar con nosotros luego de experimentar nuestro rapido sistema.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="section1 tasatodays">
+    <h2>
+        TASA DEL DÍA <i class="material-icons">attach_money</i>
+        <a  name="tasadeldia"></a>
+        <div class="line"></div>
+    </h2>
+    <div class=" about">
+        <div class="container">
+            <p>La tasa del día de hoy son las siguientes en cada país:</p>
+        </div>
+        <div class="row">
+            <div class="col s12 l12">
+                <div class="containertasaboxes">
+                    <% @rate.each do |rate| %>
+                        <div class="item-tasa-box z-depth-3">
+                            <h3><%= rate.country %></h3>
+                            <p> <span>Tasa:</span></p>
+                            <h5><%= rate.value %></h5>
+                        </div>
+                    <%end%>
+                </div>
+                <p class="avisotasa">Por favor lee nuestros términos de uso y el si contamos con el banco donde desea que llegue el dinero al momento de realizar una operación.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <hr class="z-depth-1" style="border:2px solid white"> -->
+<div class="section1">
+    <h2>
+        ACERCA
+        <a  name="acerca"></a>
+        <div class="line"></div>
+    </h2>
+    <div class=" about">
+        <%= image_tag "logo.png", width:'180px'%>
+        <div class="container">
+            <p>Somos una casa de cambio en donde se realiza cambio de divisas online a precios justos, con plena seguridad y desde la comodidad de tu hogar y oficina. Estamos convencidos que se pueden hacer las cosas mucho mas sencillas y para ello, usamos tecnología como nuestro principal aliado.</p>
+        </div>
+        <div class="row aboutRow">
+            <div class="col s12 l4">
+                <div class="boxAbout">
+                    <%= image_tag "020-relationship.png" %>
+                    <h3>1.234</h3>
+                    <p>Usuarios registrados y satisfechos con nuestro servicio.</p>
+                </div>
+            </div>
+            <div class="col s12 l4">
+                <div class="boxAbout">
+                    <%= image_tag "011-computer.png" %>
+                    <h3>2.234</h3>
+                    <p>Operaciones realizadas por todos los usuarios, demostrando confiabilidad en nuestro facil sistema.</p>
+                </div>
+            </div>
+            <div class="col s12 l4">
+                <div class="boxAbout">
+                    <%= image_tag "016-suitcase.png" %>
+                    <h3>130.234.231</h3>
+                    <p>Dolares cambiados, dando las mejores tasas en el mercado y llevandolo a cabo forma rapida nuestras operaciones.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section2 howitws z-depth-4">
+    <a name="cotizacion"></a>
+    <h2>¿Cómo funciona?
+        <div class="line"></div>
+
+        <p> Son sólo unos cuantos pasos:</p>
+    </h2>
+    <div class="row howitworks">
+        <div class="col s12 l4">
+            <div class="boxhowitworks">
+                <%= image_tag "014-network.png" %>
+                <h4>registrate</h4>
+                <p>Indica tus datos personales.</p>
+                <h1 class="circle1 z-depth-1">1</h1>
+            </div>
+        </div>
+        <div class="col s12 l4">
+            <div class="boxhowitworks">
+                <%= image_tag "006-objective.png" %>
+                <h4>calcula</h4>
+                <p>Realiza las cuentas necesarias y pide tu cambio!.</p>
+                <h1 class="circle2 z-depth-2">2</h1>
+            </div>
+        </div>
+        <div class="col s12 l4">
+            <div class="boxhowitworks">
+                <%= image_tag "015-banknote.png" %>
+                <h4>confirma</h4>
+                <p>Confirma tu operación con tu comprobante, ¡Y listo!.</p>
+                <h1 class="circle3 z-depth-3">3</h1>
+            </div>
+        </div>
+    </div>
+    <% if user_signed_in? %>
+        <%= link_to 'QUIERO REALIZAR UNA OPERACIÓN', new_quotation_path, class: 'waves-effect waves-light btn btn-theme', style:'margin: auto;display: block;width: 300px;margin-top: 40px;margin-bottom: 20px;'%> 
+    <%else%>
+        <%= link_to 'QUIERO REALIZAR UNA OPERACIÓN', new_user_registration_path, class: 'waves-effect waves-light btn btn-theme', style:'margin: auto;display: block;width: 300px;margin-top: 40px;margin-bottom: 20px;'%> 
+    <%end%>
+</div>
+
+<div class="section1">
+    <a name="testimonios"></a>
+    <h2>Testimonios
+        <div class="line"></div>      
+    </h2>
+    <div class="container">
+        <p>Acerca de 1000 Usuarios se encuentran satisfechas con los cambios en sus operaciones, únete con nosotros y notarás el cambio!.</p>
+    </div>
+    <div class="carousel carousel-slider center">
+        <div class="carousel-item white white-text" href="#one!">
+            <div class="imgpicprofile1"></div>
+            <h2 class="namepicprofile">Andres Medina</h2>
+            <p class="white-text comment"> Gracias a DG Giros 7 Remesas realizado todos mis cambios para ayudar a mi familia en Venezuela.</p>
+        </div>
+        <div class="carousel-item white white-text" href="#two!" class="profilepic">
+            <div class="imgpicprofile2"></div>
+            <h2 class="namepicprofile">Karleth Picon</h2>
+            <p class="white-text comment"> Es una página confiable donde comodamente hago mis operaciones, la mejor de Chile.</p>
+        </div>
+        
+        <div class="carousel-item white white-text" href="#three!">
+            <div class="imgpicprofile3"></div>
+            <h2 class="namepicprofile">Andrea Reyes</h2>
+            <p class="white-text comment"> Me encantó lo simple que es realizar operaciones desde mi casa, recomendado 100%.</p>
+        </div>
+        <div class="carousel-item white white-text" href="#four!">
+            <div class="imgpicprofile4"></div>
+            <h2 class="namepicprofile">Gabriel Lozada</h2>
+            <p class="white-text comment"> Desde que conocí DG Giros & Remesas no la cambio por nada en el mundo, súper atentos.</p>
+        </div>
+    </div>
+</div>
+<div class="section2 wecompany">
+    <a name="nosotros"></a>
+    <h2>Nosotros
+        <div class="line"></div>
+    </h2>
+    <div class="">
+        <div class="row aboutus">
+            <div class="col s12 l6">
+                <%= image_tag "023-partnership.png" %>
+            </div>
+            <div class="col s12 l6">
+                <h5>Quiénes Somos</h5>
+              <p>  Somos una empresa dedicada a ofrecer el mejor servicio de exchange, nuestro objetivo es proporcionarte la mejor experiencia de todos nuestros clientes a través de una atención personalizada desde el inicio hasta el final del proceso.
+            </p>
+                <h5>Visión</h5>
+                <p>Afrontamos los retos con aptitud de innovación y capacidad para colaborar en la consecución de objetivos, con el fin de ofrecer soluciones eficientes que contribuyan al desarrollo sostenible, tanto a nivel nacional como internacional, trabajando pro activamente en equipo con nuestros clientes, lo que nos promoverá a posicionarnos como una de las principales Casas de Cambio, donde la búsqueda constante de la Excelencia nos permita integrar de la manera más eficiente los recursos humanos, materiales y financieros de la Organización en pro de la creación de un modelo de servicio económico social que sirva de referencia tanto en el ámbito financiero nacional como internacional.</p>
+
+                <h5>Misión</h5>
+                <p>Nuestra misión empresarial para los próximos años consiste en llegar a ser una de las primeras organizaciones en la comercialización de giros, remesas y divisas en Chile, Venezuela y Perú. A su vez convertirnos en una entidad financiera que ayude satisfactoriamente al desarrollo de nuestro continente americano, económica y socialmente.</p>
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="">
+        <div class="row filafooter">
+            <div class="col s12 l3">
+                <div class="logofooter">
+                    <%= image_tag "logofooter.png" %>
+                    <h4 style="font-weight:bold">DG Giros & Remesas</h4>
+                </div>
+                <div class="contentfooter" style="margin-top:30px">
+                    <p>Contáctanos:</p>
+                    <p>
+                        <i class="fa fa-phone"></i>
+                        <a href="tel:+56933729461">+56933729461</a> <br>
+                        <i class="fa fa-phone"></i>
+                        <a href="tel:+56985721118">+56985721118</a> <br>
+                        <i class="fa fa-envelope"></i>
+                        <a href="mailto:dggirosyremesas@gmail.com">dggirosyremesas@gmail.com</a>
+                    </p>
+                    <p></p>
+                </div>
+            </div>
+            <div class="col s12 l3">
+                <h4>
+                    <a href="#cotizacion"> CASA DE CAMBIO</a>
+                    <div class="line"></div>
+                </h4>
+                <p>Es tan sencillo que tienes que contar 3 pasos.</p>
+                <ul>
+                    <li>1. Registrate</li>
+                    <li>2. Calcula tus giros y remesas</li>
+                    <li>3. Confirma tu operación</li>
+                    <br>
+
+                    <h4>
+                        <a href="#tasadeldia"> TASA DEL DÍA</a>
+                        <div class="line"></div>
+                    </h4>
+
+                </ul>
+            </div>
+            <div class="col s12 l2">
+                <h4>
+                    <a href="#acerca"> ACERCA</a>
+                    <div class="line"></div>
+                </h4>
+
+                <p>Dejanos contarte de que se trata todo esto.</p>
+                <p>Estamos convencidos que se pueden hacer las cosas muchisimo mas sencillas y para ello, usamos tecnología como nuestro principal aliado.</p>
+            </div>
+            <div class="col s12 l2">
+                 <h4>
+                    <a href="#nosotros"> NOSOTROS</a>
+                    <div class="line"></div>
+                 </h4>
+
+                 <p>Somos una empresa dedicada a ofrecer el mejor servicio de exchange, nuestro objetivo es proporcionarte la mejor experiecia de todos nuestros clientes a traves de una atencion personalizada desde el inicio hasta el final del proceso.</p>
+            </div>
+            <div class="col s12 l2">
+                 <h4>
+                    <a href="#testimonios"> TESTIMONIO</a>
+                    <div class="line"></div>
+                 </h4>
+                 <p>Mira lo que nuestros usuarios comentan sobre nuestros servicios y animate a unirte a DG Giros & Remesas, quedaras encontado con nuestros servicios.</p>
+            </div>
+        </div>
+        <div class="containerFooterBottom">
+            <hr class="separadorfooter">
+            <div class="derechos">
+                <div class="texto">
+                    <p>DG Giros & Remesas 2018 Todos los derechos reservados.</p>
+                </div>
+                <div class="socialfooter">
+                    <a href="https://www.instagram.com/dg_girosremesas/" target="_blank"><i class="fa fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/dg.girosremesas" target="_blank"><i class="fa fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    $(document).on("turbolinks:load",function() {
+            var elems = document.querySelectorAll('.carousel');
+            var instances = M.Carousel.init(elems, {
+            fullWidth: true,
+            indicators: true});
+
+        });
+
+        
+
+     
+
+//jquery de movimiento entre las partes de la web
+$('a[href^="#nosotros"]').click(function () {
+        $('html, body').animate({
+            scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top
+        }, 500);
+
+        return false;
+    });
+
+     $('a[href^="#tasadeldia"]').click(function () {
+        $('html, body').animate({
+            scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top
+        }, 500);
+
+        return false;
+    });
+
+
+ $('a[href^="#acerca"]').click(function () {
+        $('html, body').animate({
+            scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top
+        }, 500);
+
+        return false;
+    });     
+
+    $('a[href^="#testimonios"]').click(function () {
+        $('html, body').animate({
+            scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top
+        }, 500);
+
+        return false;
+    });
+
+
+    $('a[href^="#cotizacion"]').click(function () {
+            $('html, body').animate({
+                scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top
+            }, 500);
+
+            return false;
+        });
+</script>

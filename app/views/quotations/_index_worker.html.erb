@@ -1,0 +1,104 @@
+<div class="testing">
+  <div class="wrapper ">
+    <%= render 'partials/sidebar', report: true, worker: false, bank: false, rate: false %>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="container-fluid">
+          <p id="notice"><%= notice %></p>
+          <div class="titleDashContent">
+            <h2>Reportes <br>
+              <div class="line"></div>
+            </h2>
+            <div class="configreporttop">
+              <%= link_to 'Crear Cotización', new_quotation_path, class:'waves-effect waves-light btn btn-theme' %>
+              <% if current_user.type_person == 'admin' %>
+                <%= link_to quotations_path(:format => 'pdf'), class: 'waves-effect waves-light btn btn-theme' do %>
+                  <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
+                  Reportes en pdf 
+                <%end%>
+              <%end%>
+            </div>
+          </div>
+        </div>
+        <div class="Dashcontent">
+            <div class="table-responsive">             
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>Código</th>
+                    <th>Cantidad a <br> Recibir</th>
+                    <th>Cliente</th>
+                    <th>Pais</th>
+                    <th>Fecha</th>
+                    <th>Estatus</th>
+                    <th></th>
+                    <th></th>
+                    <% if current_user.type_person == 'admin' %>
+                      <th></th>
+                    <%end%>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @quotations.each do |quotation| %>
+                    <tr>
+                      <td><%= quotation.order %></td>
+                      <td>
+                        <% if quotation.country.downcase == 'colombia' %> 
+                          <%= ((quotation.amount) / (quotation.rate)).round(2) %>
+                        <%else%>
+                          <%= quotation.amount * quotation.rate%>
+                        <%end%>
+                      </td>
+                      <%if quotation.user.type_person == 'normal' %>
+                        <td><%= quotation.user.name %></td>
+                      <%else%>
+                        <td><%= quotation.name_user %></td>
+                      <%end%>
+                      <td><%= quotation.country %></td>
+                      <td><%= quotation.created_at.strftime("%d-%m-%Y %T") %></td>
+                      <% if quotation.status == 'Esperando Verificación' %>
+                        <td style="font-weight: bold;color: #00C851;"><%= quotation.status %></td>
+                      <% elsif quotation.status == 'Esperando Comprobante'%>
+                        <td style="font-weight: bold;color: #ff4444;"><%= quotation.status %></td>
+                      <%else%>
+                        <td style="font-weight: bold;color: #4285F4;"><%= quotation.status %></td>
+                      <%end%>
+                      <td><%= link_to 'Mostrar', quotation, class: 'waves-effect waves-light btn btn-theme'%></td>
+                      <td><%= link_to 'Editar', edit_quotation_path(quotation), class: 'waves-effect waves-light btn btn-theme' %></td>
+                      <% if current_user.type_person == 'admin' %>
+                        <td><%= link_to 'Eliminar', quotation, method: :delete, data: { confirm: '¿Seguro que desea eliminar la cotización?' }, class: 'waves-effect waves-light btn btn-theme' %></td>
+                      <%end%>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <div class="row">
+
+                <div class="paginationcontent">
+                  <%= will_paginate @quotations, previous_label: "Anterior", next_label: "Siguiente", inner_window: 1 %>
+                </div>
+
+
+            </div>
+     
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

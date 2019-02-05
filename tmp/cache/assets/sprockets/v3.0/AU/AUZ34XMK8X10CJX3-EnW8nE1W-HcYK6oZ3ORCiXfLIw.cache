@@ -1,0 +1,22 @@
+I"Ñ(function() {
+  $(document).on('change', '#quotation_country', function(evt) {});
+
+  $.ajax('get_rates', {
+    type: 'GET',
+    dataType: 'script',
+    data: {
+      country: $("#quotation_country option:selected").val()
+    },
+    error: function(jqXHR, textStatus, errorThrown) {}
+  });
+
+  console.log("AJAX Error: " + textStatus);
+
+  ({
+    success: function(data, textStatus, jqXHR) {}
+  });
+
+  console.log("PAIS SELECIONADO CORECTAMENTE OK!");
+
+}).call(this);
+:ET

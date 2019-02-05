@@ -1,0 +1,88 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col l2 s12"></div>
+  <div class="col s12 l8">
+    <div class="titlesteps">
+        <h1>Detalles de la cotización</h1>
+    </div>
+    <div class="window">
+      <div class="navbarelementobetween">
+        <h2> 
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            Los datos de la cotización se muestra a continuación
+        </h2> 
+      </div>
+      <div class="row">
+        <div class="input-field col s12 l6">
+          <p class="titleinput">Codigo de Operación</p>
+          <p class="resultinput"><%= @quotation.order %></p>
+        </div>
+        <div class="input-field col s12 l6">
+          <p class="titleinput">País</p>
+          <p class="resultinput"><%= @quotation.country %></p>
+        </div>
+        <div class="input-field col s12 l6">
+          <p class="titleinput">Tasa</p>
+          <p class="resultinput"><%= @quotation.rate %></p>
+        </div>
+        <div class="input-field col s12 l6">
+          <p class="titleinput">Cantidad a enviar</p>
+          <p class="resultinput"><%= @quotation.amount %></p>
+        </div>
+        <div class="input-field col s12 l6">
+          <p class="titleinput">Cantidad a recibir</p>
+          <p class="resultinput">
+            <% if @quotation.country.downcase == 'colombia' %> 
+              <%= ((@quotation.amount) / (@quotation.rate)).round(2) %>
+            <%else%>
+              <%= @quotation.amount * @quotation.rate%>
+            <%end%>              
+          </p>
+        </div>
+        <div class="input-field col s12 l6">
+          <p class="titleinput">Banco</p>
+          <p class="resultinput"><%= @quotation.bank %></p> 
+        </div>
+        <div class="input-field col s12 l6">
+          <p class="titleinput">Cuenta</p>
+          <p class="resultinput"><%= @quotation.account %></p>
+        </div>
+        <div class="input-field col s12 l6">
+          <p class="titleinput">Nombre del titular</p>
+          <p class="resultinput"><%= @quotation.headline_account %></p>
+        </div> 
+        <div class="input-field col s12 l6">
+          <p class="titleinput">Cedula del titular</p>
+          <p class="resultinput"><%= @quotation.id_account %></p>
+        </div> 
+        <div class="input-field col s12 l6">
+          <p class="titleinput">Correo del titular</p>
+          <p class="resultinput"><%= @quotation.gmail_account %></p>
+        </div>
+        <div class="input-field col s12 l6">
+          <p class="titleinput">Fecha de la Operación</p>
+          <p class="resultinput"><%= @quotation.created_at.strftime("%d-%m-%Y %T")%></p>
+        </div>
+        <div class="input-field col s12 l6">
+          <p class="titleinput">Estado</p>
+          <p class="resultinput"><%= @quotation.status %></p>
+        </div>
+        <div class="input-field col s12 l6" >
+            <%= link_to 'Volver', quotations_path, class: 'waves-effect waves-light btn btn-theme'%>
+        </div>      
+      </div>
+    </div>
+    <hr class="separadorfooter2">
+    <div class="derechos2">
+      <div class="texto">
+          <p>DG Giros & Remesas 2018 Todos los derechos reservados.</p>
+      </div>
+      <div class="socialfooter">
+        <a href="https://www.instagram.com/dg_girosremesas/" target="_blank"><i class="fa fa-instagram"></i></a>
+        <a href="https://www.facebook.com/dg.girosremesas" target="_blank"><i class="fa fa-facebook"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="col s2"></div>
+</div>
+

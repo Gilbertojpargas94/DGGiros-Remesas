@@ -1,0 +1,59 @@
+<div class="testing">
+  <div class="wrapper ">
+    <%= render 'partials/sidebar', report: false, worker: false, bank: true, rate: false %>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="container-fluid">
+          <p id="notice"><%= notice %></p>
+          <!-- your content here -->
+          <div class="navDashContent">
+            <div class="titleDashContent">
+              <h2>Bancos <br>
+              <div class="line"></div></h2>
+            </div>
+          </div>
+          <div class="Dashcontent">
+            <div class="row">
+              <div class="input-field col s12 l6">
+                <p>Nombre del Banco</p>
+                <input id="first_name" type="text" class="validate" value="<%= @bank.name %>" disabled>
+              </div>
+              <div class="input-field col s12 l6">
+                <p>Nombre de Beneficiario</p>
+                <input id="first_name" type="text" class="validate" value="<%= @bank.headline %>" disabled>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 l6">
+                <p>Estado</p>
+                <input id="first_name" type="text" class="validate" value="<%= @bank.status ? 'Activo' : 'Inactivo' %>" disabled>
+              </div>
+              <div class="input-field col s12 l6">
+              </div>
+            </div>
+            <div class="input-field col s12">
+              <%= link_to 'VOLVER', banks_path, class:"waves-effect waves-light btn btn-theme" %>
+              <% if current_user.type_person == 'admin' %>
+                <%= link_to 'EDITAR', edit_bank_path(@bank), class:"waves-effect waves-light btn btn-theme" %>
+              <%end%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="container logincontainer">
+  <p class="notice white-text" ><%= notice %></p>
+  <p class="alert white-text"> <%= alert %></p>
+  <div class="row">
+    <div class="col s12 l5">
+        <div class="logologin">
+            <%= image_tag "logow.png"%>
+            <h3>Bienvenido a <br> <span>DG Giros & Remesas</span> </h3>
+        </div>
+    </div>
+    <div class="col s12 l7">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="window">
+            <h2>Ingrese sus datos de usuario:</h2>
+            <div class="input-field">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"validate", id:'email' %>
+                <label for="email">Correo electronico</label>
+            </div>
+            <div class="input-field">
+                <%= f.password_field :password, autocomplete: "off", class:"validate", id:'contrasena' %>
+                <label for="contrasena">Contraseña</label>
+            </div>
+            <div class="containercontinue actions">
+                <%= f.submit "ENTRAR", class: 'waves-effect waves-light btn btn-theme', style: 'width: 100%;' %>
+            </div>
+            <div class="forgetpass">
+                <%= render "devise/shared/links" %>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
+<div class="container containerfooterlogin">
+  <div class="row footerlogin">
+    <div class="col l12">
+        <hr class="separadorfooter2">
+        <div class="derechos2">
+          <div class="texto">
+              <p>DG Giros & Remesas 2018 Todos los derechos reservados.</p>
+          </div>
+          <div class="socialfooter">
+              <a href="https://www.instagram.com/dg_girosremesas/" target="_blank"><i class="fa fa-instagram"></i></a>
+              <a href="https://www.facebook.com/dg.girosremesas" target="_blank"><i class="fa fa-facebook"></i></a>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

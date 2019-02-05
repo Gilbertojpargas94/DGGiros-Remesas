@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col l2 s12"></div>
+  <div class="col s12 l8">
+  <div class="titlesteps">
+      <h1> <span class="circle2r">2</span> Calcula</h1>
+  </div>
+  <div class="window">
+    <%= form_with(model: @quotation, local: true) do |form| %>
+        <% if @quotation.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@quotation.errors.count, "error") %> La cotización no pudo ser guardado por:</h2>
+              <ul>
+                <% @quotation.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+        <h2> 
+          <i class="material-icons">assignment</i> 
+          Realizar las cuentas necesarias, y realiza tu cambio!
+        </h2>
+        <div class="row">
+			<div class="input-field col s12 l6">
+				<p class="pLikeLabels">Cantidad a Enviar</p>
+				<%= form.text_field :amount, id:"cantidadenviar", class: 'validate', required: true%>
+			</div>
+        	<div class="input-field col s12 l6">
+        		<p class="pLikeLabels">Tasa</p>
+          		<%= form.text_field :rate , id:"tasa", class: 'validate', :disabled => true%>
+          	</div>
+            <div class="input-field col s12 l6">
+                <p class="pLikeLabels">País</p>
+              	<%= form.select :country, Rate.all.collect{|u| [u.country, u.country]},{:include_blank => "Seleccione un país"}, id: 'quotation_country',class: 'validate', required: true%>
+            </div>
+            <div class="input-field col s12 l6">
+              	<p class="titleinput">Monto resultante al Cambio</p>
+              	<input id="result_amount" type="text" class="validate resultinput" disabled>
+            </div>
+            <div class="input-field col s12 l6">
+                <p class="pLikeLabels">Banco</p> 
+              	<%= form.select :bank, @banks.collect{|u| [u, u]},{:include_blank => "Seleccione un banco"}, id: 'banks',class: 'validate', required: true%>
+            </div>
+            <div class="input-field col s12 l6">
+                <%= form.text_field :account , id:"numero_cuenta", class: 'validate', required: true%>
+                <label for="numero_cuenta">Numero de Cuenta</label>
+            </div>
+            <div class="input-field col s12 l6">
+                <%= form.text_field :headline_account , id:"beneficiarioc", class: 'validate', required: true %>
+                <label for="beneficiarioc">Nombre del Beneficiario</label>
+            </div>
+            <div class="input-field col s12 l6">
+              <%= form.text_field :id_account , id:"ced", class: 'validate'%>
+              <label for="ced">Cédula del Beneficiario</label>
+            </div>
+            <div class="input-field col s12 l6">
+              <%= form.email_field :gmail_account , id:"correo", class: 'validate'%>
+              <label for="correo">Correo del Beneficiario</label>
+            </div>
+            <div class="input-field col s12 l12">
+              <p id="msj-bank">El <span>banco</span> seleccionado no lo tenemos disponible actualmente, la transferencia se le realizara desde otro banco, por ende tomara 24h en hacerse efectiva.</p>
+              <div class="containercontinue actions">
+                <%= form.submit "CONFIRMAR Y CONTINUAR", class:'waves-effect waves-light btn btn-theme', style:'width:100%' %>
+              </div>
+            </div>
+        </div>
+      <%end%>
+    </div>
+    <p class="description">Estas en el sistema de peticion para una nueva operacion, por favor introduce datos correctos para asegurar el exito de su peticion.</p>
+    <hr class="separadorfooter2">
+    <div class="derechos2">
+      <div class="texto">
+          <p>DG Giros & Remesas 2018 Todos los derechos reservados.</p>
+      </div>
+      <div class="socialfooter">
+        <a href="https://www.instagram.com/dg_girosremesas/" target="_blank"><i class="fa fa-instagram"></i></a>
+        <a href="https://www.facebook.com/dg.girosremesas" target="_blank"><i class="fa fa-facebook"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="col s2"></div>
+</div>
+

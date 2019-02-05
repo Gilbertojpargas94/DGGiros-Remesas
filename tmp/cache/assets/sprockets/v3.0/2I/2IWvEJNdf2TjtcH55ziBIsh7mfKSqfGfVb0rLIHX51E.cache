@@ -1,0 +1,21 @@
+I"(function() {
+  $(document).on('change', '#quotation_country', function(evt) {});
+
+  $.ajax('/get_rates', console.log($('#quotation_country').val()));
+
+  ({
+    type: 'GET',
+    data: {
+      country: $('#quotation_country').val()
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      return console.log("AJAX Error: " + textStatus);
+    },
+    success: function(data, textStatus, jqXHR) {
+      console.log(data);
+      return console.log("PAIS SELECIONADO CORECTAMENTE OK!");
+    }
+  });
+
+}).call(this);
+:ET

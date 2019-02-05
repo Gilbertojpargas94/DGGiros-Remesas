@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col l2 s12"></div>
+  <div class="col s12 l8">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div class="titlesteps">
+        <h1> <span class="circle2r">1</span> Registrate</h1>
+    </div>
+    <div class="window">
+       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <h2> <i class="material-icons">assignment</i> Introduce tus datos personales para registrarte, es super sencillo!</h2>
+        <div class="row">
+          <div class="input-field col s12 l6">
+            <%= f.text_field :name, autofocus: true, autocomplete: "nombre", class: 'validate', id:'nombre' %>
+            <label for="nombre">Nombre Completo</label>
+          </div>
+          <div class="input-field col s12 l6">
+            <%= f.text_field :dni, autocomplete: "email", class: 'validate', id:'dni'%>
+            <label for="dni">Numero de Cédula</label>
+          </div>
+          <div class="input-field col s12 l6">
+            <%= f.text_field :address, autocomplete: "email", class: 'validate', id:'address'%>
+            <label for="address">Dirección</label>
+          </div>
+          <div class="input-field col s12 l6">
+            <%= f.telephone_field :phone, autocomplete: "teléfono", class: 'validate', id:'numerotlf' %>
+            <label for="numerotlf">Numero celular</label>
+          </div>
+          <div class="input-field col s12 l6">
+            <%= f.email_field :email, autocomplete: "email", class: 'validate', id:'email' %>
+            <label for="email">Correo electrónico</label>
+          </div>
+          <div class="input-field col s12 l6">
+            <%= f.password_field :password, autocomplete: "off", class: 'validate', id:'contrasena' %>
+            <label for="contrasena">Contraseña</label>
+          </div>
+          <div class="input-field col s12 l6">
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: 'validate', id:'contrasenac' %>
+            <label for="contrasenac">Confirme contraseña</label>
+          </div>
+          <div class="input-field col s12 l12">
+            ¿Estas de acuerdo con nuestras políticas de uso que están a continuación?
+            <a href="">Click para ver políticas de uso</a>
+            <p>
+              <label>
+                <input type="checkbox" class="filled-in" checked="checked" />
+                <span>Si, lo estoy.</span>
+              </label>
+            </p>
+            <div class="containercontinue actions">
+              <%= f.submit "CONFIRMAR Y CONTINUAR", class:'waves-effect waves-light btn btn-theme', style:'width:100%' %>
+            </div>
+          </div>
+        </div>
+       <%end%>
+    </div>
+    <p class="description">Estas en el sistema de registro para poder solicitar una nueva operación, por favor introduce datos correctos para asegurar el éxito de su petición.</p>
+    <hr class="separadorfooter2">
+    <div class="derechos2">
+        <div class="texto">
+            <p>DG Giros & Remesas 2018 Todos los derechos reservados.</p>
+        </div>
+        <div class="socialfooter">
+          <a href="https://www.instagram.com/dg_girosremesas/" target="_blank"><i class="fa fa-instagram"></i></a>
+          <a href="https://www.facebook.com/dg.girosremesas" target="_blank"><i class="fa fa-facebook"></i></a>
+        </div>
+    </div>
+  </div>
+  <div class="col s2"></div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, null);
+  });
+</script>

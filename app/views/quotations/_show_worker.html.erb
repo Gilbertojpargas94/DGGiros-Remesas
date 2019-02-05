@@ -1,0 +1,180 @@
+<div class="testing">
+  <div class="wrapper ">
+    <%= render 'partials/sidebar', report: true, worker: false, bank: false, rate: false %>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="container-fluid">
+          <p id="notice"><%= notice %></p>
+          <!-- your content here -->
+          <div class="titleDashContent">
+            <h2>Reportes <br>
+            <div class="line"></div></h2>
+          </div>
+          <div class="Dashcontent">
+            <p>Ver detalle de la cotización</p>
+            <form>
+              <div class="row">
+                <div class="col l12">
+                  <div class="row">
+                    <div class="input-field col s6">
+                      Código
+                      <input id="first_name" type="text" class="validate" value="<%= @quotation.order %>"  disabled>
+                    </div>
+                    <div class="input-field col s6">
+                      <%if @quotation.user.type_person == 'normal' %>
+                        Cliente
+                        <input id="first_name" type="text" class="validate" value="<%= @quotation.user.name %>" disabled>
+                      <%else%>
+                        Cliente
+                        <input id="first_name" type="text" class="validate" value="<%= @quotation.name_user %>" disabled>
+                      <%end%>
+                    </div>
+                  </div>
+                  <%if @quotation.user.type_person == 'normal' %>
+                    <div class="row">
+                      <div class="input-field col s6">
+                        Correo del cliente
+                        <input id="first_name" type="text" class="validate" value="<%= @quotation.user.email %>"  disabled>
+                      </div>
+                      <div class="input-field col s6">
+                        Teléfono del cliente
+                        <input id="first_name" type="text" class="validate" value="<%= @quotation.user.phone %>" disabled>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s6">
+                        Cédula del cliente
+                        <input id="first_name" type="text" class="validate" value="<%= @quotation.user.dni %>"  disabled>
+                      </div>
+                      <div class="input-field col s6">
+                        Dirección del cliente
+                        <input id="first_name" type="text" class="validate" value="<%= @quotation.user.address %>" disabled>
+                      </div>
+                    </div>
+                  <%else%>
+                    <div class="row">
+                      <div class="input-field col s6">
+                        Correo del cliente
+                        <input id="first_name" type="text" class="validate" value="<%= @quotation.gmail_user %>"  disabled>
+                      </div>
+                      <div class="input-field col s6">
+                        Teléfono del cliente
+                        <input id="first_name" type="text" class="validate" value="<%= @quotation.phone_user %>" disabled>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s6">
+                        Cédula del cliente
+                        <input id="first_name" type="text" class="validate" value="<%= @quotation.dni_user %>"  disabled>
+                      </div>
+                      <div class="input-field col s6">
+                        Dirección del cliente
+                        <input id="first_name" type="text" class="validate" value="<%= @quotation.address_user %>" disabled>
+                      </div>
+                    </div>
+                  <%end%>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      Fecha
+                      <input id="first_name" type="text" class="validate" value="<%= @quotation.created_at.strftime("%d-%m-%Y %T") %>" disabled>
+                    </div>
+                    <div class="input-field col s6">
+                      País
+                      <input id="first_name" type="text" class="validate" value="<%= @quotation.country %>" disabled>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      Cantidad de Pedido
+                      <input id="first_name" type="text" class="validate" value="<%= @quotation.amount %>" disabled>
+                    </div>
+                    <div class="input-field col s6">
+                      Tasa
+                      <input id="first_name" type="text" class="validate" value="<%= @quotation.rate %>" disabled>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      Cantidad a Recibir
+                      <% if @quotation.country.downcase == 'colombia' %> 
+                        <input id="first_name" type="text" class="validate" value="<%= ((@quotation.amount) / (@quotation.rate)).round(2) %>" disabled>
+                      <%else%>
+                        <input id="first_name" type="text" class="validate" value="<%= @quotation.amount * @quotation.rate%>" disabled>
+                      <%end%>
+                    </div>
+                    <div class="input-field col s6">
+                      Banco
+                      <input id="first_name" type="text" class="validate" value="<%= @quotation.bank %>" disabled>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      Cuenta a Depositar
+                      <input id="first_name" type="text" class="validate" value="<%= @quotation.account %>" disabled>
+                    </div>
+                    <div class="input-field col s6">
+                      Nombre del Beneficiario
+                      <input id="first_name" type="text" class="validate" value="<%= @quotation.headline_account %>" disabled>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      Cédula del Beneficiario
+                      <input id="first_name" type="text" class="validate" value="<%= @quotation.id_account %>" disabled>
+                    </div>
+                    <div class="input-field col s6">
+                      Correo del Beneficiario
+                      <input id="first_name" type="text" class="validate" value="<%= @quotation.gmail_account %>" disabled>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      Estatus
+                      <input id="first_name" type="text" class="validate" value="<%= @quotation.status %>" disabled>
+                    </div>
+                    <div class="input-field col s6">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col l12">
+                      <% if not @quotation.payment_file_name.nil? %>
+                        <p>Recibo de Pago</p>
+                        <% if @quotation.payment_file_name.include?(".pdf") %>
+                          <%= link_to get_payment_quotation_path(@quotation), class: 'pdf_link' do %>
+                              <i class="fa fa-file-pdf-o fa-3x" aria-hidden="true" style="display: inline"></i>
+                              <p style="display: inline; font-size: 18px;"><%= @quotation.payment_file_name %></p>
+                          <%end%>
+                        <%else%>
+                          <%= image_tag @quotation.payment.url(:large) , class:'payment-img tooltipped', id:'payimgid',:data => { "position" => "bottom" }, :data => { "tooltip" => "Ver completa la imagen" } %>
+                        <%end%>
+                      <%end%>
+                    </div>
+                  </div>
+                  <div class="row">    
+                    <div class="input-field col s12">
+                      <%= link_to 'VOLVER', quotations_path,  class:'waves-effect waves-light btn btn-theme' %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>

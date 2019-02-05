@@ -1,0 +1,9 @@
+I"¡(function() {
+  $(document).on('turbolinks:load', function() {
+    return $('#quotation_country').change(function() {});
+  });
+
+  alert('CUlo');
+
+}).call(this);
+:ET

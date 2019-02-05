@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="col l2 s12"></div>
+  <div class="col s12 l8">
+    <p id="notice"><%= notice %></p>
+    <div class="titlesteps padding-qta">
+      <h1 class="display-qta">
+        <span ><i class="fa fa-credit-card-alt" aria-hidden="true"></i></span> 
+        Tus cotizaciones
+      </h1>
+      <%= link_to 'Nueva cotización', new_quotation_path, class: 'waves-effect waves-light btn btn-theme btn-new-qta' %>
+    </div>
+    <div class="window">
+      <h2>
+        <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+        En la siguiente tabla se mostraran las cotizaciones que usted a realizado.
+      </h2>
+      <div class="row">
+      </div>
+      <table class="striped highlight responsive-table">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Enviado</th>
+            <th>Tasa</th>
+            <th>Recibido</th>
+            <th>Fecha</th>
+            <th>Estatus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @quotations.each do |quotation| %>
+            <tr>
+              <td><%= quotation.order %></td>
+              <td><%= quotation.amount %></td>
+              <td><%= quotation.rate %></td>
+              <td>
+                <% if quotation.country.downcase == 'colombia' %> 
+                  <%= ((quotation.amount) / (quotation.rate)).round(2) %>
+                <%else%>
+                  <%= quotation.amount * quotation.rate%>
+                <%end%>
+              </td>
+              <td><%= quotation.created_at.strftime("%d-%m-%Y %T") %></td>
+              <% if quotation.status == 'Esperando Verificación' %>
+                <td style="font-weight: bold;color: #00C851;"><%= quotation.status %></td>
+              <% elsif quotation.status == 'Esperando Comprobante'%>
+                <td style="font-weight: bold;color: #ff4444;"><%= quotation.status %></td>
+              <%else%>
+                <td style="font-weight: bold;color: #4285F4;"><%= quotation.status %></td>
+              <%end%>
+              <td><%= link_to 'Mostrar', quotation, class: 'waves-effect waves-light btn btn-theme btn-tables'%></td>
+              <% if quotation.status != 'Realizado' %>
+                <td><%= link_to 'Pago', edit_quotation_path(quotation), class: 'waves-effect waves-light btn btn-theme btn-tables' %></td>
+              <%end%>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= will_paginate @quotations, previous_label: "Anterior", next_label: "Siguiente", inner_window: 1 %>
+      <%= link_to 'Volver a la pagina principal', root_path, class: 'waves-effect waves-light btn btn-theme', style:'margin: auto; display: block; width: auto; margin-top: 40px; margin-bottom: 20px;' %>
+    </div>
+    <hr class="separadorfooter2">
+    <div class="derechos2">
+      <div class="texto">
+          <p>DG Giros & Remesas 2018 Todos los derechos reservados.</p>
+      </div>
+      <div class="socialfooter">
+        <a href="https://www.instagram.com/dg_girosremesas/" target="_blank"><i class="fa fa-instagram"></i></a>
+        <a href="https://www.facebook.com/dg.girosremesas" target="_blank"><i class="fa fa-facebook"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="col s2"></div>
+</div>

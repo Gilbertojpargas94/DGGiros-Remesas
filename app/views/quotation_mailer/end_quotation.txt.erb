@@ -1,0 +1,20 @@
+<%= link_to 'DG Giros & Remesas', root_url %> - Cotización Finalizada
+ 	
+Los datos de la cotización realizada se muestra a continuación:
+==============================================================
+ 
+Codigo de Operación: <%= @quotation.order %>
+Pais: <%= @quotation.country %>
+Tasa: <%= @quotation.rate %>
+Cantidad a enviar: <%= @quotation.amount %>
+Cantidad a recibir: <% if @quotation.country.downcase == 'colombia' %> 
+              			<%= ((@quotation.amount) / (@quotation.rate)).round(2) %>
+            		<%else%>
+              			<%= @quotation.amount * @quotation.rate%>
+            		<%end%> 
+Banco: <%= @quotation.bank %>
+Cuenta del beneficiario: <%= @quotation.account %>
+Nombre del beneficiario: <%= @quotation.headline_account %>
+Cédula del beneficiario: <%= @quotation.id_account %>
+Correo del beneficiario: <%= @quotation.gmail_account %>
+Fecha de la Operación: <%= @quotation.created_at.strftime("%d-%m-%Y %T")%>

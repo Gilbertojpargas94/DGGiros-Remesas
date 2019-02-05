@@ -1,0 +1,1000 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require material_icons
+ */
+
+@import "materialize";
+@import "font-awesome";
+
+//----------------------------------------------------------------------------------------------------------------------------------
+//global
+// Estilo generales que se usaran en todas las vistas.
+.btn-theme {
+    background: #FD9125 !important;
+    color     : white;
+}
+
+.btn-theme:hover{
+       background: #ffaf5e !important;
+       color     : white !important;
+}
+
+.btn-cotizaciones {
+    
+    background: rgb(37, 253, 37) !important;
+    color     : white;
+}
+
+.btn-cotizaciones:hover{
+       background: rgb(107, 255, 94) !important;
+       color     : white !important;
+}
+
+.row.filafooter h4 a{
+    color     : white;
+    transition: all 0.4s;
+}
+
+.row.filafooter h4 a:hover{
+    color: #cecece;
+}
+
+h1,h2,h3,h4,h5{
+    font-family: 'Archivo Narrow', sans-serif;
+}
+
+*,p{
+    font-family: 'Merriweather Sans', sans-serif;
+}
+//----------------------------------------------------------------------------------------------------------------------------------
+//home
+
+header{
+    background-image: url("architecture-b222.png");
+    background-size : cover;
+    width           : 100%;
+}
+
+.titleheader {
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+.subtitle{
+    color     : white;
+    text-align: center;
+    font-size : 20px;
+}
+
+.logo {
+    display  : flex;
+    flex-wrap: wrap;
+    margin   : auto;
+    img{
+        width : 100px;
+        height: 80px;
+    }
+
+    h3{
+    margin-top  : 30px;
+    margin-left : 10px;
+    font-size   : 16px;
+    margin      : 0px;
+    color       : white;
+    padding-top : 25px;
+    padding-left: 10px;
+}
+
+.contentfooter {
+    margin-top: 30px !important;
+}
+
+.contentfooter i{
+    margin-right: 8px;
+}
+
+}
+ 
+.navbar {
+    display        : flex;
+    flex-wrap      : wrap;
+    justify-content: space-between;
+    padding-top    : 10px;
+    transition: all 0.2s;
+
+    .navbarlinks{
+        display  : flex;
+        flex-wrap: wrap;
+        margin   : auto;
+    }
+}
+
+.navbar ul{
+    display        : flex;
+    width          : 50%;
+    justify-content: space-around;
+}
+
+.contentfooter i{
+    margin-right: 10px !important;
+    }
+    
+.socialfooter {
+    margin-top:10px;
+}
+
+.containerHeaderCenter{
+    text-align: center;
+    color     : white;
+
+    h4{
+    font-size : 24px;
+    margin    : 0px 100px;
+    margin-top: 20px;
+    }
+
+    h1{
+    margin        : 0px 100px 0px 200px;
+    margin-top    : 50px;
+    text-transform: uppercase;
+    }
+}
+
+.titles{
+    margin: 50px 0px;
+}
+
+
+
+
+.imgpicprofile1{
+    background     : url("https://randomuser.me/api/portraits/men/89.jpg");
+    background-size: cover;
+    border-radius  : 50%;
+    margin         : auto;
+    margin-top     : 40px;
+    width          : 180px;
+    height         : 180px;
+}
+.imgpicprofile2{
+    background     : url("https://randomuser.me/api/portraits/women/57.jpg");
+    background-size: cover;
+    border-radius  : 50%;
+    margin         : auto;
+    margin-top     : 40px;
+    width          : 180px;
+    height         : 180px;
+}
+.imgpicprofile3{
+    background     : url("https://randomuser.me/api/portraits/women/53.jpg");
+    background-size: cover;
+    border-radius  : 50%;
+    margin         : auto;
+    margin-top     : 40px;
+    width          : 180px;
+    height         : 180px;
+}
+.imgpicprofile4{
+    background     : url("https://randomuser.me/api/portraits/men/62.jpg");
+    background-size: cover;
+    border-radius  : 50%;
+    margin         : auto;
+    margin-top     : 40px;
+    width          : 180px;
+    height         : 180px;
+}
+h2.namepicprofile {
+    margin     : 10px !important;
+    font-size  : 20px !important;
+    color      : #039BE5;
+    font-weight: bold;
+}
+
+p.comment {
+    font-size: 18px !important;
+    margin   : 0px !important;
+    color    : #039BE5 !important;
+}
+
+ul.indicators li{
+        background-color: #039be5 !important;
+        bottom          : -20px !important;
+}
+
+.containerButtom {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.aboutus img{
+    margin-bottom:40px !important;
+}
+
+.howitws>h2 p{
+    color:white;
+    text-align:center;
+    font-size:20px !important;
+}
+
+.containerButtom a{
+    width: 310px !important;
+}
+
+.navbar ul{
+    font-size     : 18px;
+    text-transform: uppercase;
+
+    a{
+        color: white;
+    }
+    a:hover{
+         color     : #c5c5c5;
+         transition: all 0.4s;
+    }
+}
+
+.bottomHeader {
+    background: #00000063;
+    bottom    : 0px;
+
+    .boxInfoHeader{
+        text-align: center;
+        color     : white;
+    }
+}
+
+.section1,.section2{
+    width : 100%;
+    height: auto;
+}
+
+.section2 h2{
+    color: white;
+}
+
+.section1 h2,.section2 h2{
+    text-align : center;
+    font-size  : 38px;
+    padding-top: 30px;
+
+}
+
+.section1 p {
+    font-size: 20px !important;
+    text-align:center;
+}
+
+
+.section1 h2 .line,.section2 h2 .line{
+    width     : 100px;
+    background: #039be5;
+    height    : 3px;
+    margin    : auto;
+
+    
+}
+
+.about {
+    p{
+    font-size : 18px;
+    text-align: center;
+    
+        }
+    img{
+    display: block;
+    margin : auto;
+    }
+}
+
+.aboutRow{
+    margin-top: 60px;
+}
+
+.boxAbout img{
+    display: block;
+    width  : 120px;
+}
+
+.boxAbout h3,.boxAbout p{
+    text-align: center;
+
+}
+
+.boxhowitworks{
+    text-align: center;
+    margin-top: 40px;
+}
+
+h1.circle1 {
+    background: #ff000038;
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+    color: white;
+    font-size: 74px;
+    border-radius: 100%;
+    width: 85px;
+    border: 2px solid white;
+}
+h1.circle2 {
+    background: #ff00c838;
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+    color: white;
+    font-size: 74px;
+    border-radius: 100%;
+    width: 85px;
+    border: 2px solid white;
+} 
+h1.circle3 {
+    background: #002fff38;
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+    color: white;
+    font-size: 74px;
+    border-radius: 100%;
+    width: 85px;
+    border: 2px solid white;
+} 
+
+.howitworks img{
+    width  : 140px;
+    display: block;
+    margin : auto;
+}
+
+.boxhowitworks {
+    color: white;
+        h4{
+        text-transform: uppercase;
+        }
+        p{
+            font-size: 18px;
+        }
+}
+
+
+.aboutus{ 
+    margin-top: 20px;
+    color     : white;
+    font-size : 18px;
+        img{
+        display: block;
+        width  : 300px;
+        margin : auto;
+        }
+}
+
+.containertasaboxes {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    margin: 80px 0px 40px 0px;
+}
+
+.item-tasa-box {
+  width: 300px;
+  height: 220px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 40px;
+  background: #2196f3;
+  color:white;
+}
+
+.section1.tasatodays i{
+    font-size:36px;
+    margin-top:15px;
+}
+
+.item-tasa-box h3{
+    font-size:38px;
+    font-weight: bold;
+}
+
+.item-tasa-box span{
+    font-size:30px;
+}
+
+.item-tasa-box p{
+    margin-top: 30px;
+    font-size: 26px;
+}
+
+.item-tasa-box h5{
+    font-size:32px;
+}
+
+.item-tasa-box span{
+ 
+}
+
+p.avisotasa {
+    margin-bottom: 50px;
+}
+footer{
+    background: #242F41;
+    padding   : 30px 0px 0px 20px;
+    overflow  : hidden;
+    color     : white;
+    height    : auto;
+    position  : relative;
+    margin-top: -20px !important;
+    .filafooter{
+        margin-top: 20px;
+    }
+    h4{
+    font-size: 18px;
+    //text-align   : center;
+    position     : relative;
+    margin-bottom: 10px;
+    white-space  : nowrap;
+    position     : relative;
+        .line{
+        width     : 100px;
+        background: #039be5;
+        height    : 3px;
+        margin    : auto;
+        position  : absolute;
+        bottom    : -5px;
+        margin-top: 10px;
+        }
+    
+    }
+
+}
+
+    .separadorfooter{
+           margin: 0px 40px;
+           border: 1px solid #14262f;
+    }
+    .derechos{
+        margin         : 0px 40px;
+        display        : flex;
+        flex-wrap      : wrap;
+        justify-content: space-between;
+    }
+
+    .containerFooterBottom {
+
+    width : 100%;
+    bottom: 0px;
+    }
+
+.howitws{
+    /* The image used */
+    background-image: url("929277b.jpg");
+    /* Full height */
+    height: 100%;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position  : center;
+    background-repeat    : no-repeat;
+    background-size      : cover;
+}
+
+
+.wecompany{
+    /* The image used */
+    background-image: url("adults-3.jpg");
+    /* Full height */
+    height: 100%;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position  : center;
+    background-repeat    : no-repeat;
+    background-size      : cover;
+}
+
+.logofooter{
+        display: flex;
+        flex-wrap: wrap;
+        
+    img{
+        width : 100px;
+        height: 80px;
+    }
+
+    h4{
+    font-size  : 18px;
+    margin-left: 10px;
+    }
+
+}
+
+.socialfooter a{
+font-size   : 20px;
+margin-right: 10px;
+color       : white;
+transition  : all 0.4s;
+}
+
+.socialfooter a:hover{
+color: #b9b9b9;
+}
+
+//estilos recomodados casa beto
+.navbarlinks{
+    justify-content: space-around !important;
+    width: 60% !important;
+  }
+  
+  .btn{
+    color:white !important;
+  }
+  .row {
+    // margin-bottom: 0px !important;
+}
+
+.howitws {
+    padding-bottom: 10px;
+}
+
+.navbarlinks li{
+    margin-bottom: 10px;
+  }
+
+/* CSS para moviles */
+@media screen and (max-device-width: 480px) and (orientation: portrait){
+  /* some CSS here */
+
+  footer{
+      height: auto;
+  }
+
+  .containerFooterBottom{
+      position: initial !important;
+  }
+
+  
+
+}
+
+
+/* #### Mobile Phones Landscape #### */
+@media screen and (max-device-width: 640px) and (orientation: landscape){
+  /* some CSS here */
+}
+
+/* #### Mobile Phones Portrait or Landscape #### */
+@media screen and (max-device-width: 640px){
+  /* some CSS here */
+  .navbarelementobetween a{
+    margin: auto !important;
+} 
+}
+
+@media screen and (max-device-width: 520px){
+    #navbar2 {
+        height: auto !important;
+        opacity: 0 !important;
+    }
+
+    #navbar2 .navbarlinks a{
+        margin-top:0px
+    }
+
+    .testing .payment-img {
+        width: 100% !important;
+        cursor: pointer;
+    }
+
+    #error_explanation {
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-device-width: 320px){
+    .socialfooter{
+        margin: auto !important;
+    }
+
+}
+
+/* #### iPhone 4+ Portrait or Landscape #### */
+@media screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 2){
+  /* some CSS here */
+
+  .socialfooter{
+        margin: auto !important;
+    }
+
+  ul.navbarlinks li{
+    width        : 100%;
+    text-align   : center;
+    margin-bottom: 10px;
+}
+
+
+}
+
+
+/* #### iPhone 6 and 6 plus Portrait or Landscape #### */
+@media (min-device-height: 667px) and (min-device-width: 375px) and (-webkit-min-device-pixel-ratio: 3){
+  /* some CSS here */
+}
+
+/* #### Tablets Portrait or Landscape #### */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px){
+  /* some CSS here */
+}
+
+/* #### Desktops #### */
+@media screen and (min-width: 1024px){
+  /* some CSS here */
+}
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------
+
+// Vistas de los pasos de registro
+//Normalmente estos estilos aplican a las 4 vistas de los pasos de registros.
+
+//correciones en casa de beto pa estas vistas
+.titleinput {
+    font-size:16px;
+    font-weight: bold;
+  }
+  
+  .resultinput{
+     font-size:14px;
+
+  }
+
+$backgroundColorRegister: #242F41;
+
+.bodyregister{
+    background: $backgroundColorRegister;
+}
+
+.window{
+    background   : #ffffff;
+    border-radius: 10px;
+    padding      : 10px 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.47), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+    h2{
+    font-size: 20px;
+        }
+}
+
+.space{
+    width     : 100%;
+    height    : 100%;
+    background: red;
+}
+
+.containercontinue {
+    text-align: center;
+}
+
+.titlesteps h1{
+    color    : white;
+    font-size: 36px;
+}
+
+.circle2r {
+    background   : #6500D8;
+    border-radius: 100%;
+    padding      : 10px 20px;
+}
+
+.description{
+    color     : #cecece;
+    text-align: center;
+}
+
+
+    .derechos2{
+        display        : flex;
+        flex-wrap      : wrap;
+        justify-content: space-between;
+        .texto{
+            color: #cecece !important;
+        }
+    }
+
+
+    .separadorfooter2{
+
+           border: 1px solid #14262f;
+
+    }
+
+    .circle3r {
+    background   : blue;
+    border-radius: 100%;
+    padding      : 10px 20px;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------------------
+// vista login
+
+
+.logologin{
+    color     : white;
+    text-align: center;
+}
+
+.logincontainer {
+    margin-top: 16vh;
+}
+
+.containerfooterlogin{
+    position: relative;
+}
+.footerlogin {
+    margin-top: 100px;
+    width     : 100%;
+}
+
+.forgetpass a{
+    text-align: center;
+    display   : block;
+    margin    : 10px;
+}
+
+.newuser {
+    text-align: center;
+}
+
+
+.logologin img{
+    width:250px;
+}
+
+.logologin h3{
+    font-size:35px;
+}
+
+.logologin span{
+    font-size:35px;
+    font-weight:bold;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------
+// dashboard
+// Estos estilos aplican a las vistas del panel administrativo
+//las tres primeras sentencias simplemente sustituyen css de la plantilla.
+
+.main-panel {
+    background: white;
+}
+
+.dark-edition .navbar:not([class*="bg-"]) .navbar-brand, .dark-edition .navbar:not([class*="bg-"]) .collapse .navbar-nav .nav-item .nav-link {
+    color: #22283d;
+}
+
+.dark-edition .sidebar[data-color="purple"] li.active>a {
+    background: linear-gradient(60deg, #2196f3, #e91e1e) !important;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+}
+
+.status-red{
+    color      : red;
+    font-weight: bold;
+}
+
+.status-green{
+    color      : green;
+    font-weight: bold;
+}
+
+.status-waiting{
+    color      : blue;
+    font-weight: bold;
+}
+
+.titleDashContent h2{
+    margin-top   : 0px;
+    margin-bottom: 50px;
+    font-size    : 32px;
+}
+
+.titleDashContent {
+    display:flex !important;
+    justify-content:space-between;
+    flex-wrap: wrap;
+}
+
+.configreporttop {
+    width:auto !important;
+}
+
+
+.line{
+    width     : 100px;
+    background: #039be5;
+    height    : 3px;
+    margin-top: 5px;
+    
+}
+
+.main-panel>.content {
+    margin-top: 0px !important;
+}
+
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.navbarelementobetween{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.navbarelementobetween a{
+    margin-top:30px;
+}
+
+.forgetpass a{
+    transition:all 0.4s;
+}
+
+.forgetpass a:hover{
+    color:#fc923f;
+    font-weight:bold;
+}
+
+.registerforgetbuttonstyle{
+    padding-top:10px;
+}
+
+/* CONFIGURACION PARA FIREFOX*/
+
+input,select{
+    color:black !important;
+  }
+
+
+  // fixed bar
+  .navbarfixed {
+    position:fixed;
+    width:100%;
+    background:#2196f3;
+    top:0px;
+    z-index:9;
+    padding-bottom:10px;
+    transition: all 0.4s;
+}
+
+.navbarfixed img{
+    width:80px !important;
+    height:60px !important;
+}
+
+.navbarfixed .navbarlinks{
+    margin-top:20px;
+}
+
+.navbarfixed .navbarlinks a{
+    margin-top:-10px;
+}
+
+.navbarfixed h3{
+    margin-top:-7px;
+}
+
+#navbar2 {
+    position:fixed; 
+    // height: 75px
+    height: auto;
+}
+
+.waves-effect input[type="button"], .waves-effect input[type="reset"], .waves-effect input[type="submit"] {
+    color: white !important;
+}
+
+.pagination {
+    font-size: 17px;
+    text-align: center;
+}
+
+.pagination a,.pagination em,.pagination span{
+    padding: 4px 7px 4px 7px;
+    border:1px solid #fc923f;
+    border-radius:20px;
+    transition:all 0.4s;
+ }
+
+.pagination a:hover,.pagination em:hover,.pagination span:hover{
+    color:white !important;
+    background:#fc923f;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+
+
+.testing .paginationcontent .pagination .disabled,.next_page.disabled {
+    color:white !important;
+    background:#fc923f;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+.current{
+     color:white !important;
+    background:#fc923f; 
+}
+
+.paginationcontent{
+    margin-left:10px;
+}
+
+
+.testing .payment-img {
+    width: 70%;
+    cursor: pointer;
+}
+
+//modo testing css
+
+.paginationcontent,.pagination {
+    line-height: 32px;
+    width: 100%;
+}
+
+
+#error_explanation {
+    width: 50%;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+    background-color: #fc923f;
+    border-radius: 20px;
+}
+
+
+.field_with_errors {
+    background-color: #ff0000c2;
+    border-radius: 20px;
+}
+
+.payimgnormal{
+    width: 100%;
+    cursor: pointer;
+}

@@ -1,0 +1,126 @@
+<div class="testing">
+  <div class="wrapper ">
+    <%= render 'partials/sidebar', report: true, worker: false, bank: false, rate: false %>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="container-fluid">
+          <!-- your content here -->
+          <div class="titleDashContent">
+            <h2>Reportes <br>
+              <div class="line"></div>
+            </h2>
+          </div>
+          <div class="Dashcontent">
+            <p>Edita el estatus de la cotización</p>
+            <div class="row">
+              <div class="col l12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    Codigo
+                    <input id="first_name" type="text" class="validate" value="<%= @quotation.order %>"  disabled>
+                  </div>
+                  <div class="input-field col s6">
+                    Cliente
+                    <%if @quotation.user.type_person == 'normal' %>
+                        <input id="first_name" type="text" class="validate" value="<%= @quotation.user.name %>" disabled>
+                      <%else%>
+                        <input id="first_name" type="text" class="validate" value="<%= @quotation.name_user %>" disabled>
+                      <%end%>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    Cantidad de Pedido
+                    <input id="first_name" type="text" class="validate" value="<%= @quotation.amount %>" disabled>
+                  </div>
+                  <div class="input-field col s6">
+                    Tasa
+                    <input id="first_name" type="text" class="validate" value="<%= @quotation.rate %>" disabled>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    Cantidad a Recibir
+                    <% if @quotation.country.downcase == 'colombia' %> 
+                      <input id="first_name" type="text" class="validate" value="<%= ((@quotation.amount) / (@quotation.rate)).round(2) %>" disabled>
+                    <%else%>
+                      <input id="first_name" type="text" class="validate" value="<%= @quotation.amount * @quotation.rate%>" disabled>
+                    <%end%>
+                  </div>
+                  <div class="input-field col s6">
+                    País
+                    <input id="first_name" type="text" class="validate" value="<%= @quotation.country %>" disabled>
+                  </div>
+                </div>
+                <%= form_with(model: @quotation, local: true) do |form| %>
+                  <% if @quotation.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@quotation.errors.count, "error") %> Prohibido editar la cotización por:</h2>
+                      <ul>
+                      <% @quotation.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+
+                  <hr>
+                  <div class="row" id="set-up">
+                    <div class="input-field col s12 l6">
+                        <p style="font-weight:bold"> Estatus de la cotización <span style="color: red">*</span>  </p>
+                        <%= form.select(:status, options_for_select([['Esperando Comprobante', 'Esperando Comprobante'], ['Esperando Verificación', 'Esperando Verificación'],['Pagado', 'Pagado']], @quotation.status)) %>
+                    </div>
+                    <div class="input-field col s12 l6">
+                        <% if @quotation.payment_file_name.nil? %>
+                          <p>Subir comprobante</p>
+                          <%= form.file_field :payment, class:"filled-in", id:'pagouploader'%>
+                        <%end%>
+                    </div>
+                  </div>
+
+                  <div class="row">
+
+
+                    <div class="col s12 l6">
+                      <% if not @quotation.payment_file_name.nil? %>
+                        <p>Recibo de Pago</p>
+                        <% if @quotation.payment_file_name.include?(".pdf") %>
+                          <%= link_to get_payment_quotation_path(@quotation), class: 'pdf_link' do %>
+                              <i class="fa fa-file-pdf-o fa-3x" aria-hidden="true" style="display: inline"></i>
+                              <p style="display: inline; font-size: 18px;"><%= @quotation.payment_file_name %></p>
+                          <%end%>
+                        <%else%>
+                          <%= image_tag @quotation.payment.url(:large), class:'materialboxed payment-img', id:'payimgid'%>
+                        <%end%>
+                      <%end%>
+                    </div>
+                  </div>
+                  <div class="row">    
+                    <div class="input-field col s12">
+                      <%= link_to 'VOLVER', quotations_path, class:'waves-effect waves-light btn btn-theme' %>
+                      <%= form.submit 'GUARDAR', class:'waves-effect waves-light btn btn-theme' %>
+                    </div>
+                  </div>
+                <%end%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

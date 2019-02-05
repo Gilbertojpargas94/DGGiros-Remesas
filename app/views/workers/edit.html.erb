@@ -1,0 +1,71 @@
+<div class="testing">
+  <div class="wrapper ">
+   <%= render 'partials/sidebar', report: false, worker: true, bank: false, rate: false %>
+   <div class="main-panel">
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper"></div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+        </div>
+      </nav>
+     <!-- End Navbar -->
+      <div class="content">
+        <div class="container-fluid">
+         <!-- your content here -->
+          <div class="titleDashContent">
+            <h2>
+              Trabajadores <br>
+              <div class="line"></div>
+            </h2>
+          </div>
+          <div class="Dashcontent">
+            <%= form_for @user, :url => worker_path(@user), :method => :put do |form| %>
+              <% if @user.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@user.errors.count, "error") %> Se ha prohibido la creación del trabajador por:</h2>
+                  <ul>
+                  <% @user.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              <div class="row">
+                <div class="input-field col s12 l6">
+                  <p>Nombre</p>
+                  <%= form.text_field :name, autofocus: true, autocomplete: "nombre", class: 'validate', id:'first_name' %>
+                </div>
+                <div class="input-field col s12 l6">
+                  <p>Correo</p>
+                  <%= form.email_field :email, autocomplete: "email", class: 'validate', id:'first_name' %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 l6">
+                  <p>Tipo de trabajador</p>
+                  <%= form.select :type_person, options_for_select([['Administrador', 'admin'], ['Trabajador', 'worker'], ['Persona Normal', 'normal']], @user.type_person) %>
+                </div>
+                <div class="input-field col s12 l6">
+                  <p>Teléfono</p>
+                  <%= form.telephone_field :phone, autocomplete: "teléfono", class: 'validate', id:'first_name', placeholder: "+584140710854" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <%= link_to 'VOLVER', workers_path, class:'waves-effect waves-light btn btn-theme' %>
+                  <%= form.submit 'GUARDAR', class:'waves-effect waves-light btn btn-theme' %>     
+                </div>
+              </div>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="sidebar" data-color="purple" data-background-color="black">
+	<div class="logo">
+		<%= link_to root_path, class:"simple-text logo-normal" do %>
+		  Dashboard <br>
+		  <span style="font-weight: bold;"> DG Giros & Remesas</span> <br>
+		  <%= image_tag "logofooter.png"%>
+		<%end%>
+	</div>
+	<li class="nav-item  useradmininfo">
+		<h3>Ingresado como:</h3>
+		<p class="nameadmin"><%= current_user.nil? ? '' : current_user.name %></p>
+		<p><%= current_user.nil? ? '' : current_user.email %></p>
+	</li>
+	<div class="sidebar-wrapper">
+		<ul class="nav">
+		  	<li class="nav-item   <%=  report ? 'active' : '' %>">
+			   	<%= link_to quotations_path, class:'nav-link' do %>
+			      <i class="material-icons">assignment</i>
+			      <p>Reportes</p>
+			    <%end%>
+		  	</li>
+		  	<% if current_user.type_person == 'admin' %>
+			   	<li class="nav-item <%= worker ? 'active' : '' %> ">
+				   	<%= link_to workers_path, class:'nav-link' do %>
+				      <i class="material-icons">assignment_ind</i>
+				      <p>Trabajadores</p>
+				    <%end%>
+			  	</li>
+			<%end%>
+			<li class="nav-item <%= bank ? 'active' : '' %>  ">
+			 	  <%= link_to banks_path, class:'nav-link' do %>
+			      <i class="material-icons">account_balance</i>
+			      <p>Cuentas Bancarias</p>
+			    <%end%>
+		  	</li>
+			  	<li class="nav-item <%= rate ? 'active' : '' %> ">
+			 	  <%= link_to rates_path, class:'nav-link' do %>
+			      <i class="material-icons">attach_money</i>
+			      <p>Tasa por día</p>
+			    <%end%>
+		  	</li>
+		</ul>
+		<ul class="nav menuadmin">
+
+		  <li class="nav-item">
+		    <%= link_to destroy_user_session_path, method: :delete, class:'nav-link btnadminoff' do %>
+		      <i class="material-icons"></i>
+		      <p>Cerrar sesión</p>
+		    <%end%>
+		  </li>
+		</ul>
+	</div>
+</div>

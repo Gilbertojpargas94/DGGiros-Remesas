@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <%= wicked_pdf_stylesheet_link_tag "pdf" %>
+    
+
+    <style>
+      .imgreport{
+        width:80px;
+        margin: auto;
+      }
+
+      .titlereport{
+        width:100% !important;
+        justify-content: space-around;
+        margin-bottom: 80px !important;
+      }
+
+      .titlereport h2{
+        text-align: center;
+        font-size: 30px;
+      }
+
+
+      .logoreprt h2{
+        font-size: 26px !important;
+        margin: auto;
+        margin-bottom: 30px !important;
+        text-align: left;
+        position: relative;
+        left: 100px;
+        bottom: 50px;
+      }
+      .logoreprt{
+        margin-bottom: 40px;
+      }
+      .titlereport p{
+        margin-bottom: 40px;
+      }
+
+      thead { display: table-header-group }
+      tfoot { display: table-row-group }
+      tr { page-break-inside: avoid }
+
+      .table th,thead {
+        color: #fff;
+        background-color: #212529;
+        border-color: #32383e;
+        
+      }
+
+      .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+      }
+
+      .table th {
+        padding: .75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+      }
+
+      th {
+        text-align: inherit;
+      }
+      *, ::after, ::before {
+        box-sizing: border-box;
+      }
+
+      th {
+        font-weight: bold;
+        text-align: -internal-center;
+      }
+
+      td, th {
+        display: table-cell;
+        vertical-align: inherit;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      table {
+        display: table;
+        border-collapse: separate;
+        border-spacing: 2px;
+        border-color: grey;
+      }
+
+      .table td{
+        padding: .75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;  
+        border-right: 1px solid #dee2e6;
+        font-size: 14px !important;
+      }     
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </head>
+  <body onload='number_pages()'>
+    <div id="content">
+      <div class="content">
+        <div class="container-fluid">
+          <p id="notice"><%= notice %></p>
+          <div class="titleDashContent titlereport">
+            <div class="logoreprt">
+              <%= wicked_pdf_image_tag "logow.png" , class:'imgreport' %>
+              <h2>DG Giros & Remesas</h2>
+            </div>
+            <p>Tiempo de creacion del Reporte:  <span id="fechaactual"><%= Time.zone.now %> </span> <br><br>
+              <span style="font-weight: bold; font-size:15px;">Leyenda:</span> <br>
+              <span style="font-weight: bold;color: #00C851; font-size:13px;">Esperando Verificacion</span><br>
+              <span style="font-weight: bold;color: #4285F4; font-size:13px;">Esperando Pago</span><br>
+              <span style="font-weight: bold;color: #ff4444; font-size:13px;">Esperando Comprobante</span>
+            </p>
+            <h2>Reporte General de Operaciones</h2>
+          </div>
+          <div class="Dashcontent">    
+            <table class="table table-striped pdftable" style="width:100%">
+              <thead>
+                <tr>
+                  <th scope="col">Código</th>
+                  <th scope="col">Nombre cliente</th>
+                  <th scope="col">Correo Electrónico</th>
+                  <th scope="col">Dirección</th>
+                  <th scope="col">Cédula</th>
+                  <th scope="col">Teléfono</th>
+                  <th scope="col">País</th>
+                  <th scope="col">Cantidad a Recibir</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Estatus</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @quotations.each do |quotation| %>
+                  <tr>
+                    <td scope="row"><%= quotation.order %></td>
+                    <td><%= quotation.user.type_person == 'normal' ? quotation.user.name : quotation.name_user %></td>
+                    <td><%= quotation.user.type_person == 'normal' ? quotation.user.email : quotation.gmail_user %></td>
+                    <td><%= quotation.user.type_person == 'normal' ? quotation.user.address : quotation.address_user %></td>
+                    <td><%= quotation.user.type_person == 'normal' ? quotation.user.dni : quotation.dni_user %></td>
+                    <td><%= quotation.user.type_person == 'normal' ? quotation.user.phone : quotation.phone_user %></td>
+                    <td><%= quotation.country %></td>
+                    <td><%= quotation.country.downcase == 'colombia' ? ((quotation.amount) / (quotation.rate)).round(2) : quotation.amount * quotation.rate%></td>
+                    <td><%= quotation.created_at.strftime("%d-%m-%Y %T") %></td>
+                    <% if quotation.status == 'Esperando Verificación' %>
+                      <td style="font-weight: bold;color: #00C851;">E.V</td>
+                    <% elsif quotation.status == 'Esperando Comprobante'%>
+                      <td style="font-weight: bold;color: #ff4444;">E.C</td>
+                    <%else%>
+                      <td style="font-weight: bold;color: #4285F4;">E.P</td>
+                    <%end%>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <div class="row">
+              <div class="col s12"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
